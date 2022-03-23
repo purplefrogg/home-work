@@ -1,0 +1,44 @@
+@import '~antd/dist/antd.dark.css';
+
+.app{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+.header{
+    .menu{
+       
+        display: grid;
+        
+    }
+}
+.main{
+    
+}
+.DevteamGrid{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, 300px );
+    grid-template-rows:    repeat(auto-fit, 400px);
+    gap: 10px;
+    justify-content: space-around;
+    .DevteamGrid_item{
+        text-align: center;
+        .avatar{
+           max-width: 300px;
+        }
+        .discription{
+            min-height: 300px;
+            max-width: 300px;
+            font-size: 20px;
+        }
+    }
+}
+@media screen and (max-width:800px) {
+    .app{
+        grid-template-columns: 1fr;
+        grid-template-rows: 30px 1fr;
+        .header{
+          
+        }
+    }
+}
+
