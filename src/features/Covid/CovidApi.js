@@ -20,7 +20,8 @@ export const CovidApi = createApi({
         getStatistics: builder.query({
             query: (country='') => createRequest(`/statistics/${country}`)
         }),
-    })
+    }),
+    keepUnusedDataFor: 5000
 })
 export const {
     useGetCountriesQuery,

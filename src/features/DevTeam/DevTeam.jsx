@@ -9,7 +9,7 @@ const DevTeam = () => {
     <>
       <Typography.Title level={1} style={{textAlign: 'center'}}> OUR TEAM</Typography.Title>
       <div className='DevteamGrid'>
-        {devteam.map((dev) => <Devitem dev={dev} />)}
+        {devteam.map((item) => <Developer dev={item} key={item.id}/>)}
       </div>
     </>
 
@@ -18,7 +18,7 @@ const DevTeam = () => {
 
 export default DevTeam
 
-const Devitem = ({ dev }) => {
+const Developer = ({ dev }) => {
   const [active, setActive] = useState(false)
   return <div className='DevteamGrid_item'>
     <Typography.Title>{dev.name}</Typography.Title>

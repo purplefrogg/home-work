@@ -1,4 +1,4 @@
-import { Select } from 'antd'
+import { Select, Spin } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useGetCountriesQuery, useGetStatisticsQuery } from './CovidApi'
 import { Table } from 'antd';
@@ -11,7 +11,6 @@ const Covid = () => {
 
 
     const { data: countriesList } = useGetCountriesQuery()
-    console.log(statisticsList)
     useEffect(() => {
         setStatistics(statisticsList?.response)
         const filteredData = statisticsList?.response?.filter((country) => country.country.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -65,16 +64,19 @@ const Covid = () => {
         },
     ]
 
-    const dataSource = statistics?.map((data) => ({country: data.country, population: data.population,
+    const dataSource = statistics?.map((data) => ({
+        country: data.country,
+        population: data.population,
         totalCases: data.cases.total,
         newCases: data.cases.new,
         totalDeaths: data.deaths.total,
         newDeaths: data.deaths.new,
         totalRecovered: data.cases.recovered,
         activeCases: data.cases.active,
-        totalTests: data.tests.total
+        totalTests: data.tests.total,
+        key:  data.country
     }))
-    if (isFetching) return 'Loading...'
+    if (isFetching) return   <Spin className='spin'/>
     return (
         <div>
             <Select
@@ -87,15 +89,13 @@ const Covid = () => {
                 }
                 filterSort={(optionA, optionB) =>
                     optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                }
+                }   
                 onChange={(e) => setSearchTerm(e)}
             >
-                <Select.Option value=''>default</Select.Option>
-                {countriesList.response.map((counrty) => <Select.Option value={counrty}>{counrty}</Select.Option>)}
+                <Select.Option value=''>.default</Select.Option>
+                {countriesList?.response.map((counrty) => <Select.Option key={counrty} value={counrty}>{counrty}</Select.Option>)}
             </Select>
-            <Table scroll={{x: true}} columns={columns} dataSource={dataSource}/>
-            {/* {statistics?.map((data) => <CountryStats props={data} />)}
-            {} */}
+            <Table scroll={{ x: true }} columns={columns} dataSource={dataSource} />
         </div>
     )
 }

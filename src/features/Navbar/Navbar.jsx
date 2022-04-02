@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   
-  return (<Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+  return (<Menu theme="dark" mode="inline">
     <Menu.Item key="1">
       <Link to='/'>Home</Link>
     </Menu.Item>
@@ -17,20 +17,10 @@ const Navbar = () => {
     <Menu.Item key="4" >
     <Link to='/CurrencyExchange'>Exchange</Link>
     </Menu.Item>
+    <Menu.Item key="5" >
+    <Link to='/Movie'>Movie</Link>
+    </Menu.Item>
   </Menu>
-      // <Button type='default'>
-      //  
-      // </Button>
-      // <Button type='default'>
-      //  <Link to='/COVID'>COVID</Link>
-      // </Button> 
-      // <Button type='default'>
-      //  <Link to='/DevTeam'>Dev Team</Link>
-      // </Button>
-      // <Button type='default'>
-      //  <Link to='/CurrencyExchange'>Currency Exchange</Link>
-      // </Button>
-   
   )
 }
 

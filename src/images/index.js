@@ -1,5 +1,6 @@
 export { default as kuanyshAvatar } from './kuanyshAvatar.png'
 export { default as DiasAvatar } from './DiasAvatar.png'
 export { default as ArstanAvatar } from './ArstanAvatar.png'
-export { default as IslamAvatar } from './IslamAvatar.png'
 export { default as AibarAvatar } from './AibarAvatar.png'
+export { default as NurbekAvatar } from './NurbekAvatar.png'
+export { default as AzizAvatar } from './AzizAvatar.png'

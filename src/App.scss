@@ -11,9 +11,7 @@
         
     }
 }
-.main{
-    
-}
+
 .DevteamGrid{
     display: grid;
     grid-template-columns: repeat( auto-fit, 300px );
@@ -36,9 +34,73 @@
     .app{
         grid-template-columns: 1fr;
         grid-template-rows: 30px 1fr;
-        .header{
-          
+        
+    }
+}
+
+.spin {
+    width: 100%;
+    text-align: center;
+  }
+
+.MoviePage{
+    .genres{
+        display: grid;
+        grid-template-columns: repeat( auto-fit, 120px );
+        gap: 15px;
+        justify-content: space-around;
+        .genre{
+            
+            .button-31 {
+                width: 120px;
+                height: 80px;
+                background-color: #222;
+                
+                border-style: none;
+                box-sizing: border-box;
+                color: #fff;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.5;
+                max-width: none;
+                min-height: 44px;
+                min-width: 10px;
+                outline: none;
+                overflow: hidden;
+                position: relative;
+                text-align: center;
+                text-transform: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                width: 100%;
+              }
+              
+              .button-31:hover,
+              .button-31:focus {
+                opacity: .75;
+              }
+        }
+    }
+    .movies_Grid{
+        display: grid;
+        grid-template-columns: repeat( auto-fit, 300px );
+        gap: 5px;
+        justify-content: space-around;
+        .movies_Grid__item{
+            .title{
+                text-align: center;
+            }
+            &:hover{
+                opacity: 50%;
+            }
+            .movie{
+                
+            }
         }
     }
 }
+
 

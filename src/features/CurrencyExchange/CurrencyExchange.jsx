@@ -1,16 +1,15 @@
-import { Select, InputNumber, Typography} from 'antd'
+import { Select, InputNumber, Typography, Spin} from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useGetExchangeQuery, useGetListquotesQuery } from './CurrencyExcApi'
 
 const CurrencyExchange = () => {
-  const {data, isFetching} = useGetListquotesQuery()
+  const {data, isLoading} = useGetListquotesQuery()
 
-  const [fromCurrency, setFromCurrency] = useState(null)
-  const [toCurrency, setToCurrency] = useState(null)
-  const [excResult, setExcResult] = useState(null)
+  const [fromCurrency, setFromCurrency] = useState()
+  const [toCurrency, setToCurrency] = useState()
+  const [excResult, setExcResult] = useState()
   const [inputValue, setInputValue] = useState(1)
   const {data: currencyPrice} = useGetExchangeQuery({toCurrency, fromCurrency})
-  console.log(data)
 
   const onInputValue = (e) =>{
     setInputValue(e)
@@ -20,21 +19,22 @@ const CurrencyExchange = () => {
   }
   , [inputValue, toCurrency, fromCurrency, currencyPrice])
   
-  if(isFetching) return 'Loading...'
+  if(isLoading) return   <Spin className='spin' />
   return (
-    <div>
+    <div style={{textAlign: 'center'}}>
       <Select
       style={{ width: 150 }}
       onChange={(e)=>setFromCurrency(e)}
+      defaultValue={data[3]}
       >
-        {data.map((currency) => <Select.Option value={currency} >{currency}</Select.Option>)}
+        {data.map((currency) => <Select.Option  key={currency} value={currency} >{currency}</Select.Option>)}
       </Select>
       <InputNumber  min={1} defaultValue={inputValue} onChange={onInputValue}/>
       <Select
       style={{ width: 150 }}
       onChange={(e)=>setToCurrency(e)}
       >
-        {data.map((currency) => <Select.Option value={currency} >{currency}</Select.Option>)}
+        {data.map((currency) => <Select.Option key={currency} value={currency} >{currency}</Select.Option>)}
       </Select>
       <Typography.Title >{excResult}</Typography.Title>
     </div>

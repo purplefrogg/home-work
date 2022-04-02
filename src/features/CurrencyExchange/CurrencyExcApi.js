@@ -19,9 +19,10 @@ export const CurrencyExcApi = createApi({
             query: () => createRequest(`/listquotes`)
         }),
         getExchange: builder.query({
-            query: ({toCurrency, fromCurrency}) => createRequest(`/exchange?to=${toCurrency}&from=${fromCurrency}`)
+            query: ({toCurrency, fromCurrency='USD'}) => createRequest(`/exchange?to=${toCurrency}&from=${fromCurrency}`)
         })
-    })
+    }),
+    keepUnusedDataFor: 5000
 })
 
 export const {
